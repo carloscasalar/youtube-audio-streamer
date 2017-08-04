@@ -1,15 +1,19 @@
 {
   "name": "youtube-audio-streamer",
-  "version": "1.0.0",
+  "version": "1.0.0-SNAPSHOT",
   "description": "Youtube audio streamer",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node index.js",
-    "prestart:prod": "tsc",
-    "start:prod": "node dist/server.js"
+    "start": "node dist/server.js",
+    "build": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:carloscasalar/youtube-audio-streamer.git"
+  },
+  "private": true,
+  "author": "carloscasalar",
+  "license": "MIT",
   "dependencies": {
     "@nestjs/common": "^3.0.0",
     "@nestjs/core": "^3.0.1",
@@ -17,11 +21,14 @@
     "@nestjs/testing": "^3.0.0",
     "@nestjs/websockets": "^3.0.0",
     "reflect-metadata": "^0.1.10",
-    "rxjs": "^5.4.2",
-    "typescript": "^2.4.2"
+    "rxjs": "^5.4.2"
   },
   "devDependencies": {
-    "@types/node": "^7.0.5",
-    "ts-node": "^2.1.0"
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.39",
+    "mocha": "^3.5.0",
+    "ts-node": "^2.1.2",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2"
   }
 }

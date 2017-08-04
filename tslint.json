@@ -1,0 +1,20 @@
+{
+  "__sample": "https://palantir.github.io/tslint/usage/configuration/",
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "max-line-length": {
+      "options": [
+        120
+      ]
+    },
+    "quotemark": [
+      "single"
+    ],
+    "indent": [true, "spaces", 4]
+  },
+  "rulesDirectory": []
+}
