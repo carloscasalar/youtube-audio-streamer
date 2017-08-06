@@ -18,6 +18,12 @@ $ npm run build
 $ npm run start
 ```
 
+## Test
+
+```
+$ npm test
+```
+
 ## Docker image
 
 Build:

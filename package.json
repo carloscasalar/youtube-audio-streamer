@@ -5,6 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
+    "test": "ts-mocha",
     "build": "tsc"
   },
   "repository": {
@@ -26,9 +27,16 @@
     "rxjs": "^5.4.2"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.2",
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.39",
+    "@types/sinon": "^2.3.3",
+    "@types/sinon-chai": "^2.7.28",
+    "chai": "^4.1.1",
     "mocha": "^3.5.0",
+    "sinon": "^3.0.0",
+    "sinon-chai": "^2.12.0",
+    "ts-mocha": "^1.0.3",
     "ts-node": "^2.1.2",
     "tslint": "^5.5.0",
     "typescript": "^2.4.2"
