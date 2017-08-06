@@ -5,16 +5,20 @@ export class Starter {
     private port: number;
 
     constructor(config: IConfiguration, private app: INestApplication) {
-        this.port = this.normalizePort(config.port);
+        this.port = config.port;
     }
 
-    public start() {
+    public start(): void {
         this.listenEndProcessEvents();
         const server = this.app.listen(this.port, () => this.onListening());
         server.on('error', (err) => this.onError(err));
     }
 
-    private listenEndProcessEvents() {
+    public shutdown(): void {
+        this.app.close();
+    }
+
+    protected listenEndProcessEvents() {
         process.on('SIGTERM', () => {
             console.info('Received SIGTERM');
 
@@ -28,27 +32,7 @@ export class Starter {
         });
     }
 
-    private shutdown() {
-        this.app.close();
-    }
-
-    private normalizePort(val: any) {
-        const port = parseInt(val, 10);
-
-        if (isNaN(port)) {
-            // named pipe
-            return val;
-        }
-
-        if (port >= 0) {
-            // port number
-            return port;
-        }
-
-        throw TypeError('Port should be a number bigger than zero');
-    }
-
-    private onError(error: IError) {
+    private onError(error: IError): void {
         if (error.syscall !== 'listen') {
             throw error;
         }
@@ -69,12 +53,12 @@ export class Starter {
         }
     }
 
-    private onListening() {
+    private onListening(): void {
         const bind = this.getPortBind();
         console.info(`Listening on ${bind}`);
     }
 
-    private getPortBind() {
+    private getPortBind(): string {
         const port = this.port;
         const bind = typeof port === 'string' ?
             'Pipe ' + port :

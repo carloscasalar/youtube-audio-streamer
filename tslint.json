@@ -14,7 +14,13 @@
     "quotemark": [
       "single"
     ],
-    "indent": [true, "spaces", 4]
+    "indent": [
+      true,
+      "spaces",
+      4
+    ],
+    "no-var-requires": true,
+    "no-empty": false
   },
   "rulesDirectory": []
 }
