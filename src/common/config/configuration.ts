@@ -1,5 +1,5 @@
-const defaults = require('../../config/config.json');
-import { IConfiguration } from '../component/config/iconfiguration';
+const defaults = require('../../../config/config.json');
+import { IConfiguration } from '../../component/config/iconfiguration';
 
 export class Configuration implements IConfiguration {
     public port: number;
