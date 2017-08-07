@@ -1,15 +1,7 @@
-FROM node:8.2.1-alpine
+FROM youtube-audio-streamer
 MAINTAINER Carlos Castillo
 
-RUN apk update && apk add ffmpeg && rm -rf /var/cache/apk/*
-
-RUN ["mkdir", "/opt/app"]
-COPY config /opt/app/config
-COPY src /opt/app/src
 COPY test /opt/app/test
-COPY *.json /opt/app/
-
-WORKDIR "/opt/app"
 
 RUN npm install
 

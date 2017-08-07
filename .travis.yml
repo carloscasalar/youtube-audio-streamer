@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 before_install:
+  - docker build . -f Dockerfile -t youtube-audio-streamer
   - docker build . -f Dockerfile-travis -t youtube-audio-streamer-travis
-  - docker ps -a
 script:
   - docker run --rm -it youtube-audio-streamer-travis
