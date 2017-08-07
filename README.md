@@ -1,4 +1,4 @@
-# Youtube video streamer
+# Youtube video streamer [![Build Status](https://travis-ci.org/carloscasalar/youtube-audio-streamer.svg?branch=develop)](https://travis-ci.org/carloscasalar/youtube-audio-streamer)
 
 ## Installation
 
