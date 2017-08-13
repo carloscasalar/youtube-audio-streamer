@@ -4,7 +4,6 @@ import * as sinonChai from 'sinon-chai';
 
 import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
 
-import { INestMicroservice } from '@nestjs/common/interfaces/nest-microservice.interface';
 import { IConfiguration } from '../../../src/component/config/iconfiguration';
 import { Starter } from '../../../src/component/server/starter';
 
