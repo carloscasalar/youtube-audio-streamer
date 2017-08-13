@@ -18,3 +18,5 @@ npm-debug.log
 
 # dist
 /dist
+/src/**/*.js
+/test/**/*.js
