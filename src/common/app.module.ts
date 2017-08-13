@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { StreamController } from "./stream/stream.controller";
+import { StreamModule } from "./stream/stream.module";
 
 @Module({
-    controllers: [ StreamController ],
+    modules: [StreamModule],
 })
 export class ApplicationModule {
 }

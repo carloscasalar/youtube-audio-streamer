@@ -2,7 +2,7 @@ import * as chai from 'chai';
 import { spy, stub } from 'sinon';
 import * as sinonChai from 'sinon-chai';
 
-import { INestApplication } from "@nestjs/common/interfaces/nest-application.interface";
+import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
 
 import { IConfiguration } from '../../../src/component/config/iconfiguration';
 import { Starter } from '../../../src/component/server/starter';
@@ -16,10 +16,21 @@ describe('Starter tests', () => {
     let starter: Starter;
     let onServerStub;
     beforeEach('instantiating mocks', () => {
+
+        const connectMicroservice = () => {
+            return {
+                close: () => {
+                },
+                listen: (callback) => callback(),
+                useWebSocketAdapter: (adapter) => {
+                },
+            };
+        };
+
         app = {
             close: () => {
             },
-            connectMicroservice: undefined,
+            connectMicroservice,
             getMicroservices: () => [],
             init: () => {
             },

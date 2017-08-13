@@ -1,11 +1,21 @@
-import { Controller, Get, HttpStatus, Param, Query, Res } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Query, Res, UsePipes } from '@nestjs/common';
 import { Response } from 'express';
+import { StreamService } from './stream.service';
+import { YoutubeUrlValidatorPipe } from './youtube/youtube-url-validator.pipe';
 
 @Controller()
 export class StreamController {
+    constructor(private streamService: StreamService) { }
+
     @Get('stream-by-url')
-    public async streamByUrl(@Res() res: Response, @Query('youtubeUrl') youtubeUrl?: string) {
-        const youtubeId = youtubeUrl || 'unknown';
-        res.status(HttpStatus.OK).json({youtubeId});
+    @UsePipes(new YoutubeUrlValidatorPipe())
+    public async streamByUrl(@Res() res: Response, @Query('youtubeUrl') youtubeUrl: string) {
+        try {
+            this.streamService.getAudioStream(youtubeUrl).pipe(res);
+        }catch (e) {
+            const message = `Unexpected error while processing youtube stream: ${e.message}`;
+            console.error('Error while process youtube url', e);
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message});
+        }
     }
 }
