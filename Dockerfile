@@ -1,4 +1,4 @@
-FROM node:8.2.1-alpine
+FROM node:8.3-alpine
 MAINTAINER Carlos Castillo
 
 RUN apk update && apk add ffmpeg && rm -rf /var/cache/apk/*
