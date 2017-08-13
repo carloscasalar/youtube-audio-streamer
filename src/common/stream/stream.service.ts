@@ -6,8 +6,12 @@ interface IStream {
     pipe(res: Response): void;
 }
 
+export interface IStreamService {
+    getAudioStream(youtubeVideoUrl: string): IStream;
+}
+
 @Component()
-export class StreamService {
+export class StreamService implements IStreamService {
     public getAudioStream(youtubeVideoUrl: string): IStream {
         return youtubeStream(youtubeVideoUrl);
     }

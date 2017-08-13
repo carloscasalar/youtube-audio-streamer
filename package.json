@@ -5,9 +5,9 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "test": "ts-mocha",
+    "test": "ts-mocha -p test/ test/**/*.spec.ts",
     "build": "tsc",
-    "clean": "find ./src -name \"*.js\" -type f -delete && find ./test -name \"*.js\" -type f -delete",
+    "clean": "rm -rf dist && find ./src -name \"*.js\" -type f -delete && find ./test -name \"*.js\" -type f -delete",
     "js-unwanted": "find ./src -name \"*.js\" -type f && find ./test -name \"*.js\" -type f"
   },
   "repository": {
@@ -21,7 +21,6 @@
     "@nestjs/common": "^3.0.0",
     "@nestjs/core": "^3.0.1",
     "@nestjs/microservices": "^3.0.1",
-    "@nestjs/testing": "^3.0.0",
     "@nestjs/websockets": "^3.0.0",
     "@types/express": "^4.0.36",
     "body-parser": "^1.17.2",
@@ -30,6 +29,7 @@
     "youtube-audio-stream": "0.0.50"
   },
   "devDependencies": {
+    "@nestjs/testing": "^3.0.0",
     "@types/chai": "^4.0.2",
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.39",
