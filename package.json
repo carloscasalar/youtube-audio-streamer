@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node dist/server.js",
     "test": "ts-mocha",
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "find ./src -name \"*.js\" -type f -delete && find ./test -name \"*.js\" -type f -delete",
+    "js-unwanted": "find ./src -name \"*.js\" -type f && find ./test -name \"*.js\" -type f"
   },
   "repository": {
     "type": "git",
