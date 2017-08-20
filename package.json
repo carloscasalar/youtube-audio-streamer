@@ -1,6 +1,6 @@
 {
   "name": "youtube-audio-streamer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Youtube audio streamer",
   "main": "dist/server.js",
   "scripts": {
