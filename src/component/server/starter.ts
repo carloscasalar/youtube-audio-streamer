@@ -1,10 +1,11 @@
 import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
 import { IConfiguration } from '../config/iconfiguration';
+import { ILogger } from '../log/logger.interface';
 
 export class Starter {
     private port: number;
 
-    constructor(config: IConfiguration, private app: INestApplication) {
+    constructor(config: IConfiguration, private app: INestApplication, private log: ILogger) {
         this.port = config.port;
     }
 
@@ -20,13 +21,13 @@ export class Starter {
 
     protected listenEndProcessEvents() {
         process.on('SIGTERM', () => {
-            console.info('Received SIGTERM');
+            this.log.info('Received SIGTERM');
 
             this.shutdown();
         });
 
         process.on('SIGINT', () => {
-            console.info('Received SIGINT');
+            this.log.info('Received SIGINT');
 
             this.shutdown();
         });
@@ -41,11 +42,11 @@ export class Starter {
         // handle specific listen errors with friendly messages
         switch (error.code) {
             case 'EACCES':
-                console.error(`${bind} requires elevated privileges`);
+                this.log.error(`${bind} requires elevated privileges`);
                 process.exit(1);
                 break;
             case 'EADDRINUSE':
-                console.error(`{bind} is already in use`);
+                this.log.error(`{bind} is already in use`);
                 process.exit(1);
                 break;
             default:
@@ -55,7 +56,7 @@ export class Starter {
 
     private onListening(): void {
         const bind = this.getPortBind();
-        console.info(`Listening on ${bind}`);
+        this.log.info(`Listening on ${bind}`);
     }
 
     private getPortBind(): string {
