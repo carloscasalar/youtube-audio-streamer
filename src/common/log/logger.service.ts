@@ -25,6 +25,10 @@ export class LoggerService implements ILogger {
     }
 
     private emitLogMessage(msgType: "debug"| "info"| "warn"| "error", msg: string, supportingData: any[]) {
+        if (process.env.NODE_ENV === 'CI') {
+            return;
+        }
+
         if (supportingData.length > 0) {
             logger[msgType](msg, supportingData);
         }else {
