@@ -1,0 +1,8 @@
+FROM youtube-audio-streamer
+MAINTAINER Carlos Castillo
+
+COPY test /opt/app/test
+
+RUN npm install
+
+CMD npm test

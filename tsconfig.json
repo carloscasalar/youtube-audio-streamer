@@ -13,6 +13,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "allowJs": true,
+    "alwaysStrict": true,
     "outDir": "./dist"
   },
   "include": [
@@ -21,6 +22,6 @@
   "exclude": [
     "dist",
     "node_modules",
-    "**/*.spec.ts"
+    "typings"
   ]
 }
