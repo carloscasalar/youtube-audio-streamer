@@ -20,3 +20,4 @@ npm-debug.log
 /dist
 /src/**/*.js
 /test/**/*.js
+/logs

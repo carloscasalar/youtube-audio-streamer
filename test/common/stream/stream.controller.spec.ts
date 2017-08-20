@@ -1,6 +1,7 @@
 import * as chai from 'chai';
 import { spy, stub } from 'sinon';
 import * as sinonChai from 'sinon-chai';
+import { LoggerService } from '../../../src/common/log/logger.service';
 import { StreamController } from '../../../src/common/stream/stream.controller';
 import { IStreamService } from '../../../src/common/stream/stream.service';
 
@@ -19,7 +20,7 @@ describe('Streamer controller tests', () => {
         pipe = spy();
         getAudioStream = stub().returns({ pipe });
         streamService = { getAudioStream };
-        streamController = new StreamController(streamService);
+        streamController = new StreamController(streamService, new LoggerService());
 
         const json = spy();
         const status = stub().returns({ json });
