@@ -1,18 +1,13 @@
 import { Component } from '@nestjs/common';
-import { Response } from 'express';
 import * as youtubeStream from 'youtube-audio-stream';
 
-interface IStream {
-    pipe(res: Response): void;
-}
-
 export interface IStreamService {
-    getAudioStream(youtubeVideoUrl: string): IStream;
+    getAudioStream(youtubeVideoUrl: string): NodeJS.ReadableStream;
 }
 
 @Component()
 export class StreamService implements IStreamService {
-    public getAudioStream(youtubeVideoUrl: string): IStream {
+    public getAudioStream(youtubeVideoUrl: string): NodeJS.ReadableStream {
         return youtubeStream(youtubeVideoUrl);
     }
 }
