@@ -9,10 +9,11 @@ export class Starter {
         this.port = config.port;
     }
 
-    public start(): void {
+    public start(): INestApplication {
         this.listenEndProcessEvents();
         const server = this.app.listen(this.port, () => this.onListening());
         server.on('error', (err) => this.onError(err));
+        return server;
     }
 
     public shutdown(): void {

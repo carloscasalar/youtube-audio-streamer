@@ -16,4 +16,5 @@ const app = NestFactory.create(ApplicationModule, instance);
 const log = new LoggerService();
 
 const starter = new Starter(new Configuration(), app, log);
-starter.start();
+
+export const startedApp = starter.start();
