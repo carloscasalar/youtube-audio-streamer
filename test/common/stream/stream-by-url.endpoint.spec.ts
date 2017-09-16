@@ -7,13 +7,13 @@ import * as request from 'supertest';
 import { IConfiguration } from '../../../src/component/config/iconfiguration';
 import { ILogger } from '../../../src/component/log/logger.interface';
 import { Starter } from '../../../src/component/server/starter';
-import { app, expressInstance } from '../../../src/server';
+import { server, expressInstance } from '../../../src/server';
 import { ValidVideoFixture} from './valid-video.fixtures';
 
 xdescribe('stream-by-url endpoint tests', () => {
     let appInstance: INestApplication;
     let log: ILogger;
-    before('start expressInstance of app', () => {
+    before('start expressInstance of server', () => {
         const config: IConfiguration = {
           port: 3000,
         };
@@ -24,7 +24,7 @@ xdescribe('stream-by-url endpoint tests', () => {
             info: spy(),
             warn: spy(),
         };
-        const starter: Starter = new Starter(config, app, log);
+        const starter: Starter = new Starter(config, server, log);
         appInstance = starter.start();
     });
 

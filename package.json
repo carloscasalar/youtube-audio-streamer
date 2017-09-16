@@ -2,9 +2,9 @@
   "name": "youtube-audio-streamer",
   "version": "1.0.1",
   "description": "Youtube audio streamer",
-  "main": "dist/index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/app.js",
     "test": "ts-mocha -p test/ test/**/*.spec.ts",
     "build": "tsc",
     "clean": "rm -rf dist && find ./src -name \"*.js\" -type f -delete && find ./test -name \"*.js\" -type f -delete",

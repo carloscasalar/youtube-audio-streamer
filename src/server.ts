@@ -6,4 +6,4 @@ import { ApplicationModule } from './common/app.module';
 
 export const expressInstance: Application = ExpressAdapter.create();
 
-export const app = NestFactory.create(ApplicationModule, expressInstance);
+export const server = NestFactory.create(ApplicationModule, expressInstance);
