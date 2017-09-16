@@ -8,7 +8,7 @@ import { IConfiguration } from '../../../src/component/config/iconfiguration';
 import { ILogger } from '../../../src/component/log/logger.interface';
 import { Starter } from '../../../src/component/server/starter';
 import { server, expressInstance } from '../../../src/server';
-import { ValidVideoFixture} from './valid-video.fixtures';
+import { ValidVideoFixture} from '../../fixtures/valid-video.fixtures';
 
 xdescribe('stream-by-url endpoint tests', () => {
     let appInstance: INestApplication;

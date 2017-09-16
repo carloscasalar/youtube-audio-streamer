@@ -12,6 +12,7 @@ describe('Streamer controller tests', () => {
     let streamService: IStreamService;
     let streamController: StreamController;
     let pipe;
+    let on;
     let youtubeUrl;
     let getAudioStream;
     let res;
@@ -19,7 +20,8 @@ describe('Streamer controller tests', () => {
     beforeEach('streamService stub instantiation', () => {
         youtubeUrl = 'https://youtu.be/g-gp-Voq6MQ';
         pipe = spy();
-        getAudioStream = stub().returns({ pipe });
+        on = spy();
+        getAudioStream = stub().returns({ pipe, on });
         streamService = { getAudioStream };
         streamController = new StreamController(streamService, new LoggerService());
 
