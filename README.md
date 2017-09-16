@@ -1,5 +1,11 @@
 # Youtube video streamer [![Build Status](https://travis-ci.org/carloscasalar/youtube-audio-streamer.svg?branch=master)](https://travis-ci.org/carloscasalar/youtube-audio-streamer)
 
+This is a simple youtube audio streamer. It stream sound of a provided youtube URL to your browser.
+
+After start point your browser to `http://localhost:3000/stream-by-url?youtubeUrl=[YOUTUBE URL ENCODED URL]`.
+i. e., to listen the audio of `https://youtu.be/OZHinPswQ1g` just point the browser to 
+`http://localhost:3000/stream-by-url?youtubeUrl=https%3A%2F%2Fyoutu.be%2FOZHinPswQ1g`
+
 ## Installation
 
 ```
