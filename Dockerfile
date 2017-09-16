@@ -14,8 +14,7 @@ RUN npm install
 COPY config /opt/app/config
 COPY src /opt/app/src
 
-RUN npm run build && \
-    ls -al -R
+RUN npm run build
 
 ENV PORT 3000
 
