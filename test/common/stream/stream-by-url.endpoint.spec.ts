@@ -1,13 +1,12 @@
 import { HttpStatus } from '@nestjs/common';
 import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
 import { expect } from 'chai';
-import { recorder } from 'nock';
 import { spy } from 'sinon';
 import * as request from 'supertest';
 import { IConfiguration } from '../../../src/component/config/iconfiguration';
 import { ILogger } from '../../../src/component/log/logger.interface';
 import { Starter } from '../../../src/component/server/starter';
-import { server, expressInstance } from '../../../src/server';
+import { expressInstance, server } from '../../../src/server';
 import { ValidVideoFixture} from '../../fixtures/valid-video.fixtures';
 
 xdescribe('stream-by-url endpoint tests', () => {
