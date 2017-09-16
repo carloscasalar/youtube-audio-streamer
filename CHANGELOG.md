@@ -1,3 +1,8 @@
+## 1.0.2 (2017-09-17)
+Modified:
+  * Add log messages when stream ends.
+  * Add pm2 process manager to docker image.
+
 ## 1.0.1 (2017-08-20)
 Fixed:
   * Expose PORT 3000 on docker image.

@@ -4,6 +4,7 @@ import * as sinonChai from 'sinon-chai';
 
 import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
 
+import { LoggerService } from '../../../src/common/log/logger.service';
 import { IConfiguration } from '../../../src/component/config/iconfiguration';
 import { Starter } from '../../../src/component/server/starter';
 
@@ -56,7 +57,7 @@ describe('Starter tests', () => {
             port: 4000,
         };
 
-        starter = new Starter(configuration, app);
+        starter = new Starter(configuration, app, new LoggerService());
         spy(starter, 'shutdown');
     });
 

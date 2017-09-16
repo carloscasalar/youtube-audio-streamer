@@ -7,7 +7,7 @@
 /.vscode
 
 # misc
-npm-debug.log
+*.log
 
 # example
 /quick-start

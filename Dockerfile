@@ -1,23 +1,23 @@
-FROM node:8.3-alpine
+FROM keymetrics/pm2:8
 MAINTAINER Carlos Castillo
 
 RUN apk update && apk add ffmpeg && rm -rf /var/cache/apk/*
 
 RUN ["mkdir", "/opt/app"]
-COPY config /opt/app/config
-COPY src /opt/app/src
+WORKDIR /opt/app
+
 COPY *.json /opt/app/
 
-WORKDIR "/opt/app"
+ENV NPM_CONFIG_LOGLEVEL error
+RUN npm install
 
-RUN npm install && \
-    npm run build && \
-    rm -rf node_modules && \
-    npm install --only=production && \
-    npm cache clean --force
+COPY config /opt/app/config
+COPY src /opt/app/src
+
+RUN npm run build
 
 ENV PORT 3000
 
 EXPOSE 3000
 
-CMD npm start
+CMD [ "pm2-docker", "start", "pm2.json" ]

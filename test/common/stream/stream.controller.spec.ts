@@ -12,24 +12,28 @@ describe('Streamer controller tests', () => {
     let streamService: IStreamService;
     let streamController: StreamController;
     let pipe;
+    let on;
     let youtubeUrl;
     let getAudioStream;
     let res;
+    let next;
     beforeEach('streamService stub instantiation', () => {
         youtubeUrl = 'https://youtu.be/g-gp-Voq6MQ';
         pipe = spy();
-        getAudioStream = stub().returns({ pipe });
+        on = spy();
+        getAudioStream = stub().returns({ pipe, on });
         streamService = { getAudioStream };
         streamController = new StreamController(streamService, new LoggerService());
 
         const json = spy();
         const status = stub().returns({ json });
         res = { status };
+        next = spy();
     });
 
     describe('if youtube call has no error', () => {
         beforeEach('call streamByUrl', (done) => {
-            streamController.streamByUrl(res, youtubeUrl)
+            streamController.streamByUrl(res, /*next,*/ youtubeUrl)
                 .then(() => done())
                 .catch(done);
         });
@@ -46,7 +50,7 @@ describe('Streamer controller tests', () => {
     describe('if youtube call throws an unexpected error', () => {
         beforeEach('override streamer stub behavior to throw error. Also call streamByUrl', (done) => {
             getAudioStream.throws();
-            streamController.streamByUrl(res, youtubeUrl)
+            streamController.streamByUrl(res, /*next,*/ youtubeUrl)
                 .then(() => done())
                 .catch(done);
         });
