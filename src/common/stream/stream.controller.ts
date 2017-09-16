@@ -10,14 +10,29 @@ export class StreamController {
 
     @Get('stream-by-url')
     @UsePipes(new YoutubeUrlValidatorPipe())
-    public async streamByUrl(@Res() res: Response, @Query('youtubeUrl') youtubeUrl: string) {
+    public async streamByUrl(@Res() res: Response,
+                             @Query('youtubeUrl') youtubeUrl: string) {
         try {
             this.log.info(`Streaming youtube URL: ${youtubeUrl}`);
-            this.streamService.getAudioStream(youtubeUrl).pipe(res);
-        }catch (e) {
+            const stream = this.streamService.getAudioStream(youtubeUrl);
+
+            stream.on('end', () => {
+               this.log.info(`Stream of ${youtubeUrl} ended`);
+            });
+
+            stream.on('close', () => {
+               this.log.info(`Stream of ${youtubeUrl} closed`);
+            });
+
+            stream.pipe(res);
+        } catch (e) {
             const message = `Unexpected error while processing youtube stream: ${e.message}`;
             this.log.error('Error while process youtube url', e);
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message});
+            if (res.status) {
+                res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message});
+            } else {
+                throw e;
+            }
         }
     }
 }

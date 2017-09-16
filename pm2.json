@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "youtube-streamer",
+      "script": "./dist/app.js",
+      "out_file": "out.log",
+      "error_file": "error.log",
+      "env": {
+        "port": 3000,
+        "production": true
+      }
+    }
+  ]
+}
