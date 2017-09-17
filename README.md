@@ -2,9 +2,8 @@
 
 This is a simple youtube audio streamer. It stream sound of a provided youtube URL to your browser.
 
-After start point your browser to `http://localhost:3000/stream-by-url?youtubeUrl=[YOUTUBE URL ENCODED URL]`.
-i. e., to listen the audio of `https://youtu.be/OZHinPswQ1g` just point the browser to 
-`http://localhost:3000/stream-by-url?youtubeUrl=https%3A%2F%2Fyoutu.be%2FOZHinPswQ1g`
+After start point your browser to `http://localhost:3000`, write (or paste) the youtube URL of the video and push 
+the "listen" button.
 
 ## Installation
 

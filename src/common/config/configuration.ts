@@ -1,5 +1,6 @@
-const defaults = require('../../../config/config.json');
 import { IConfiguration } from '../../component/config/iconfiguration';
+// tslint:disable-next-line
+const defaults = require('../../../config/config.json');
 
 export class Configuration implements IConfiguration {
     public port: number;

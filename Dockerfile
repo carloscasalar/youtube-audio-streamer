@@ -13,6 +13,8 @@ RUN npm install
 
 COPY config /opt/app/config
 COPY src /opt/app/src
+COPY views /opt/app/views
+COPY public /opt/app/public
 
 RUN npm run build
 
