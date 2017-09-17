@@ -1,5 +1,9 @@
+## 1.1.0 (2017-09-17)
+Added:
+  * Index page at `/`.
+
 ## 1.0.2 (2017-09-17)
-Modified:
+Added:
   * Add log messages when stream ends.
   * Add pm2 process manager to docker image.
 
