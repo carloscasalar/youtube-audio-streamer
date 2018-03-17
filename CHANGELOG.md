@@ -6,6 +6,7 @@ Modified:
 ## 1.1.0 (2017-09-17)
 Added:
   * Index page at `/`.
+  * Use simple material style from https://getmdl.io/started/index.html
 
 ## 1.0.2 (2017-09-17)
 Added:
