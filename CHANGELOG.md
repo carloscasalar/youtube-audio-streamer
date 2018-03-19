@@ -6,6 +6,9 @@
   * Upgrade node version to current LTS: 8.9
   * Upgrade nested dependency of momentjs to 2.19.3 due to known vulnerabilities in 2.18.1 (through scribe-js)
   * Upgrade nested dependency ytdl-core to 0.20.2 due to [this issue](https://github.com/JamesKyburz/youtube-audio-stream/issues/110#issuecomment-369415811)
+  
+*Modify:*
+  * pm2 image changed to `keymetrics/pm2:8-alpine`.  
 
 ## 1.1.0 (2017-09-17)
 *Add:*
