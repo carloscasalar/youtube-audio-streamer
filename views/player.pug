@@ -24,10 +24,14 @@ html
 
             main.mdl-layout__content
                 .page-content
-                    form(action="/" method="GET")
-                        audio(controls)
-                            source(src=streamURL type="audio/mpeg")
 
-                        .button-bar
-                            button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored
-                                | back
+                    audio(controls)
+                        source(src=streamURL type="audio/mpeg")
+
+                    .button-bar
+                        label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="prevent-sleep")
+                            input.mdl-switch__input(type="checkbox" id="prevent-sleep")
+                            span.mdl-switch__label Prevent browser sleep
+
+        script(defer src="lib/no-sleep.min.js")
+        script(defer src="js/player.js")

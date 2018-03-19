@@ -1,6 +1,7 @@
 ## 1.2.0 (2018-XX-YY)
 *Add:*
   * Listen button redirects to a new page `/player` that allows listen the audio with rustic audio controls.
+  * Toggle button to prevent browser to sleep in player page.
 
 *Fix:*
   * Upgrade node version to current LTS: 8.9
