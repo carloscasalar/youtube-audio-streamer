@@ -1,3 +1,7 @@
-audio{
+audio {
+    margin: 10px;
+}
+
+.button-bar {
     margin: 10px;
 }
