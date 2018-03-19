@@ -10,7 +10,6 @@ export class IndexController {
     @Get('/')
     public async streamByUrl(@Res() res: Response) {
         this.log.info('New access to index');
-        const playerURL = '/player';
-        res.render('index', {title, playerURL});
+        res.render('index', {title});
     }
 }

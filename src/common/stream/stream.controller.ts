@@ -18,8 +18,7 @@ export class StreamController {
         } catch (e) {
             const error = `Unexpected error trying to load listen page: ${e.message}`;
             this.log.error('Error loading listen page', e);
-            const playerURL = '/player';
-            res.render('index', {title, playerURL, error});
+            res.render('index', {title, error});
         }
     }
 
