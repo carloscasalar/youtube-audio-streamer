@@ -1,4 +1,4 @@
-# Youtube video streamer [![Build Status](https://travis-ci.org/carloscasalar/youtube-audio-streamer.svg?branch=master)](https://travis-ci.org/carloscasalar/youtube-audio-streamer)
+# Youtube Audio Streamer [![Build Status](https://travis-ci.org/carloscasalar/youtube-audio-streamer.svg?branch=master)](https://travis-ci.org/carloscasalar/youtube-audio-streamer)
 
 This is a simple youtube audio streamer. It stream sound of a provided youtube URL to your browser.
 
