@@ -1,4 +1,4 @@
-FROM keymetrics/pm2:8
+FROM keymetrics/pm2:8-alpine
 MAINTAINER Carlos Castillo
 
 RUN apk update && apk add ffmpeg && rm -rf /var/cache/apk/*

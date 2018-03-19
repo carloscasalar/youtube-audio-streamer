@@ -3,10 +3,24 @@ import { Response } from 'express';
 import { LoggerService } from '../log/logger.service';
 import { StreamService } from './stream.service';
 import { YoutubeUrlValidatorPipe } from './youtube/youtube-url-validator.pipe';
+import { title } from '../config/app-info';
 
 @Controller()
 export class StreamController {
-    constructor(private streamService: StreamService, private log: LoggerService) { }
+    constructor(private streamService: StreamService, private log: LoggerService) {}
+
+    @Get('player')
+    public async playerPage(@Res() res: Response, @Query('youtubeUrl') youtubeUrl: string) {
+        try {
+            this.log.info(`Requested listen page for youtube URL: ${youtubeUrl}`);
+            const streamURL = `/stream-by-url?youtubeUrl=${encodeURIComponent(youtubeUrl)}`;
+            res.render('player', {title, streamURL});
+        } catch (e) {
+            const error = `Unexpected error trying to load listen page: ${e.message}`;
+            this.log.error('Error loading listen page', e);
+            res.render('index', {title, error});
+        }
+    }
 
     @Get('stream-by-url')
     @UsePipes(new YoutubeUrlValidatorPipe())
@@ -17,11 +31,11 @@ export class StreamController {
             const stream = this.streamService.getAudioStream(youtubeUrl);
 
             stream.on('end', () => {
-               this.log.info(`Stream of ${youtubeUrl} ended`);
+                this.log.info(`Stream of ${youtubeUrl} ended`);
             });
 
             stream.on('close', () => {
-               this.log.info(`Stream of ${youtubeUrl} closed`);
+                this.log.info(`Stream of ${youtubeUrl} closed`);
             });
 
             stream.pipe(res);

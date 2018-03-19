@@ -1,3 +1,7 @@
 form {
     text-align: center;
 }
+.error{
+    color: red;
+    font-weight: bold;
+}
