@@ -25,13 +25,19 @@ html
             main.mdl-layout__content
                 .page-content
 
-                    audio(controls)
-                        source(src=streamURL type="audio/mpeg")
+                    .card-wide.mdl-card.mdl-shadow--2dp
+                        .mdl-card__title(style=backgroundStyle)
+                            h2.mdl-card__title-text Audio
+                        .mdl-card__supporting-text
+                            audio(controls)
+                                source(src=streamURL type="audio/mpeg")
+                        .mdl-card__actions.mdl-card--border
+                            .button-bar
+                                label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="prevent-sleep")
+                                    input.mdl-switch__input(type="checkbox" id="prevent-sleep")
+                                    span.mdl-switch__label Prevent browser sleep
 
-                    .button-bar
-                        label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="prevent-sleep")
-                            input.mdl-switch__input(type="checkbox" id="prevent-sleep")
-                            span.mdl-switch__label Prevent browser sleep
+
 
         script(defer src="lib/no-sleep.min.js")
         script(defer src="js/player.js")

@@ -5,3 +5,15 @@ audio {
 .button-bar {
     margin: 10px;
 }
+
+.card-wide.mdl-card {
+    margin-left: 5%;
+    width: 90%;
+}
+.card-wide > .mdl-card__title {
+    color: #fff;
+    height: 70%;
+}
+.card-wide > .mdl-card__menu {
+    color: #fff;
+}
