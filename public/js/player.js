@@ -8,7 +8,6 @@
     toggleSleepCtrl.addEventListener('click', handleClick);
 
     function handleClick(event) {
-        debugger;
         if(!noSleep){
             if(!NoSleep){
                 event.preventDefault();
