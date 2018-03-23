@@ -4,6 +4,7 @@ import * as sinonChai from 'sinon-chai';
 import { LoggerService } from '../../../src/common/log/logger.service';
 import { StreamController } from '../../../src/common/stream/stream.controller';
 import { IStreamService } from '../../../src/common/stream/stream.service';
+import { YoutubeInfoService } from '../../../src/common/youtube/youtube-info.service';
 
 const expect = chai.expect;
 chai.use(sinonChai);
@@ -23,7 +24,9 @@ describe('Streamer controller tests', () => {
         on = spy();
         getAudioStream = stub().returns({ pipe, on });
         streamService = { getAudioStream };
-        streamController = new StreamController(streamService, new LoggerService());
+
+        const youtubeInfoService = new YoutubeInfoService();
+        streamController = new StreamController(youtubeInfoService, streamService, new LoggerService());
 
         const json = spy();
         const status = stub().returns({ json });
