@@ -21,8 +21,9 @@ export class StreamController {
             this.log.info(`Requested listen page for youtube URL: ${youtubeUrl}`);
             const streamURL = `/stream-by-url?youtubeUrl=${encodeURIComponent(youtubeUrl)}`;
             this.youtubeInfoService.getThumbnails(youtubeUrl)
-                .then(({default: thumbnail}) => {
-                    const backgroundStyle = `background: url('${thumbnail}') center center / cover;`;
+                .then(({default: defaultThumbnail, high, medium}) => {
+                    const thumbnail = high || medium || defaultThumbnail;
+                    const backgroundStyle = `background: url('${thumbnail}') no-repeat center center / cover;`;
                     res.render('player', {title, streamURL, backgroundStyle});
                 })
                 .catch((e) => {

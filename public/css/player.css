@@ -7,7 +7,7 @@ audio {
 }
 
 .card-wide.mdl-card {
-    margin-left: 5%;
+    margin: 0 auto;
     width: 90%;
 }
 .card-wide > .mdl-card__title {
