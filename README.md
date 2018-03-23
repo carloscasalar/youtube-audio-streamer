@@ -1,4 +1,4 @@
-# Youtube video streamer [![Build Status](https://travis-ci.org/carloscasalar/youtube-audio-streamer.svg?branch=master)](https://travis-ci.org/carloscasalar/youtube-audio-streamer)
+# Youtube Audio Streamer [![Build Status](https://travis-ci.org/carloscasalar/youtube-audio-streamer.svg?branch=master)](https://travis-ci.org/carloscasalar/youtube-audio-streamer) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/afe75134cbb342cab26eb32422a59244)](https://www.codacy.com/app/castillo.st/youtube-audio-streamer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=carloscasalar/youtube-audio-streamer&amp;utm_campaign=Badge_Grade)
 
 This is a simple youtube audio streamer. It stream sound of a provided youtube URL to your browser.
 

@@ -1,12 +1,42 @@
 import { Controller, Get, HttpStatus, Query, Res, UsePipes } from '@nestjs/common';
 import { Response } from 'express';
+import { title } from '../config/app-info';
 import { LoggerService } from '../log/logger.service';
+import { YoutubeInfoService } from '../youtube/youtube-info.service';
 import { StreamService } from './stream.service';
 import { YoutubeUrlValidatorPipe } from './youtube/youtube-url-validator.pipe';
 
 @Controller()
 export class StreamController {
-    constructor(private streamService: StreamService, private log: LoggerService) { }
+    constructor(
+        private youtubeInfoService: YoutubeInfoService,
+        private streamService: StreamService,
+        private log: LoggerService,
+    ) {}
+
+    @Get('player')
+    @UsePipes(new YoutubeUrlValidatorPipe())
+    public async playerPage(@Res() res: Response, @Query('youtubeUrl') youtubeUrl: string) {
+        try {
+            this.log.info(`Requested listen page for youtube URL: ${youtubeUrl}`);
+            const streamURL = `/stream-by-url?youtubeUrl=${encodeURIComponent(youtubeUrl)}`;
+            this.youtubeInfoService.getThumbnails(youtubeUrl)
+                .then(({default: defaultThumbnail, high, medium}) => {
+                    const thumbnail = high || medium || defaultThumbnail;
+                    const backgroundStyle = `background: url('${thumbnail}') no-repeat center center / cover;`;
+                    res.render('player', {title, streamURL, backgroundStyle});
+                })
+                .catch((e) => {
+                    const error = `Unexpected error trying to load video thumbnails: ${e.message}`;
+                    this.log.error('Error loading gathering thumbnail', e);
+                    res.render('index', {title, error});
+                });
+        } catch (e) {
+            const error = `Unexpected error trying to load listen page: ${e.message}`;
+            this.log.error('Error loading listen page', e);
+            res.render('index', {title, error});
+        }
+    }
 
     @Get('stream-by-url')
     @UsePipes(new YoutubeUrlValidatorPipe())
@@ -17,11 +47,11 @@ export class StreamController {
             const stream = this.streamService.getAudioStream(youtubeUrl);
 
             stream.on('end', () => {
-               this.log.info(`Stream of ${youtubeUrl} ended`);
+                this.log.info(`Stream of ${youtubeUrl} ended`);
             });
 
             stream.on('close', () => {
-               this.log.info(`Stream of ${youtubeUrl} closed`);
+                this.log.info(`Stream of ${youtubeUrl} closed`);
             });
 
             stream.pipe(res);

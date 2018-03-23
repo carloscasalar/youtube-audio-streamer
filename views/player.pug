@@ -1,0 +1,43 @@
+html
+    head
+        title=title
+        meta(name = "viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        link(rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css")
+        link(rel="stylesheet" href="css/index.css")
+        link(rel="stylesheet" href="css/player.css")
+        script(defer src="https://code.getmdl.io/1.3.0/material.min.js")
+    body
+
+        .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+            header.mdl-layout__header
+                .mdl-layout__header-row
+                    span.mdl-layout-title=title
+                    .mdl-layout-spacer
+                    nav.mdl-navigation.mdl-layout--large-screen-only
+                        a.mdl-navigation__link(href='https://github.com/carloscasalar/youtube-audio-streamer') Fork me on Github
+
+            .mdl-layout__drawer
+                span.mdl-layout-title=title
+                nav.mdl-navigation
+                    a.mdl-navigation__link(href='https://github.com/carloscasalar/youtube-audio-streamer') Fork me on Github
+
+            main.mdl-layout__content
+                .page-content
+
+                    .card-wide.mdl-card.mdl-shadow--2dp
+                        .mdl-card__title(style=backgroundStyle)
+                            h2.mdl-card__title-text Audio
+                        .mdl-card__supporting-text
+                            audio(controls)
+                                source(src=streamURL type="audio/mpeg")
+                        .mdl-card__actions.mdl-card--border
+                            .button-bar
+                                label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="prevent-sleep")
+                                    input.mdl-switch__input(type="checkbox" id="prevent-sleep")
+                                    span.mdl-switch__label Prevent browser sleep
+
+
+
+        script(defer src="lib/no-sleep.min.js")
+        script(defer src="js/player.js")

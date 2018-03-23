@@ -1,9 +1,13 @@
 {
   "name": "youtube-audio-streamer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Youtube audio streamer",
   "main": "dist/app.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
+    "postinstall": "cp node_modules/nosleep.js/dist/NoSleep.min.js public/lib/no-sleep.min.js",
     "start": "node dist/app.js",
     "test": "ts-mocha -p test/ test/**/*.spec.ts",
     "build": "tsc",
@@ -24,11 +28,14 @@
     "@nestjs/websockets": "^3.0.0",
     "@types/express": "^4.0.36",
     "body-parser": "^1.17.2",
+    "get-video-id": "^3.0.0",
+    "nosleep.js": "^0.7.0",
     "pug": "^2.0.0-rc.4",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.2",
     "scribe-js": "^2.0.4",
-    "youtube-audio-stream": "0.0.50"
+    "youtube-audio-stream": "0.0.50",
+    "youtube-thumbnails": "^1.0.2"
   },
   "devDependencies": {
     "@nestjs/testing": "^3.0.0",

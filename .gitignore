@@ -21,3 +21,5 @@
 /src/**/*.js
 /test/**/*.js
 /logs
+
+public/lib
